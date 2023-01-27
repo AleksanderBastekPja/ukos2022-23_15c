@@ -1,0 +1,8 @@
+Po zatrzymaniu gedita kombinacja CTRL Z a następnie wpisaniu bg
+ program znów działa. 
+Są również w nim wpisane rzeczy które zostały wpisane jak program działał w tle
+Komenda fg wznawia wstrzymane programy
+Uzywajac & uruchamiamy program w tle
+
+Uzywajac fg%nr_jobu przywracamy do działanie program,
+ który wczesniej diałał w tle

@@ -1,0 +1,13 @@
+Jeśli wpiszemy w terminalu:
+-ps- służy do wyswietlania listy procesów
+-ps-a - wyświetla więcej informacji również o innych użytkownikach
+-ps x - zmienia format wyjścia na bsd, oraz wyświetla wyniki dotyczące sesji
+-ps axu - wyświetla wszytkie procesy wszystkich użytkowników
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Znaki zapytania oznaczją nieznana wartość procesu, które nie mają terminala
+
+Wyświetl wszystkie procesy bash
+ps axu | grep bash | grep -v grep
+Wyświetl wszystkei procesy należące do użytkownika root
+ps axu | grep ^root
