@@ -3,6 +3,32 @@ Mój drogi pamietniku na dzisiejszych zajeciach nauczylem sie:
 - zakladać konto na githubie;
 -logowac sie na szuflandie;
 - tworzyc katalogi i korzystac z podstawowych komend;
-15.10.2022
-- przypomnialem sobie co robilismy na ostatnich zajeciach;
+- dowiedzialem sie jak poruszac sie po terminalu oraz jak uzywac polecen w systemach linuxowych;
+- poznalem sciezke wzgledna i bezwzgledna, nayczylem sie tworzyc/usuwac katalogi.
 
+2.
+Nauczylem sie zmieniac/nadawac uprawnienia katalogom i plikom.
+Dowiedzialem sie jak uzywac systemu binarnego i osemkowego do zmiany/nadawania uprawnien.
+
+3.
+Dowiedzialem sie czym sa stumienie wyjsciowe/wejsciowe oraz struminie bledow.
+Nauczylem sie przekierowywania strumieni.
+Dowiedzialem sie czy jest kill i SIGKILL oraz jakie sa miedzy nimi roznice.
+Nauczylem sie wstrzymywania procesow oraz ich wznawiania.
+
+POWERSHELL
+
+Uruchomiłem powershella jako administrator, wpisałem komendę "Set-ExecutionPolicy Bypass", aby moc uruchamiac swoje skrytpty z poziomu zwyklego uzytkownika.
+Nastepnie, uzyłem poleceń wyświetlających pomoc wraz z przykładami użycia.
+Uzylem kilku przykladowych komend, np. liste dostepnych modulow. Sprawdzilem rowniez opcje z komendami zawierajacymi znak " | " ,
+uruchamiajacy kolejne polecenie na danych wyjsciowych z poprzedniego polecenia oraz skroty (?, %).
+Zaladowalem BitsTransfer komenda  Import-Module BitsTransfer, oraz wylistowalem komendy dostepne w tym module komenda Get-Command -Module BitsTransfer.
+Za pomoca komendy Start-BitsTransfer pobrałem program ze strony www, sprawdzajac stan transferu za pomoca komendy "Get-BitsTransfer".
+Uzylem aliasu "Get-Alias | ? {$_.Definition -like "Get-ChildItem"}" do wylistowania zawartosci katalogu, oraz wylistowalem pliki i katalogi
+w odstepie czasowym.
+Komenda "& C:\Windows\notepad.exe" otworzylem notatnik.
+Wylistowalem dostepne w PS dyski, a komenda "cd hklm:\" wszedlem w rejestr. 
+Komenda ls wylistowalem zawartość rejestru.
+Za pomoca Get-WmiObject -Class Win32_Product | Format-Table -AutoSize wylistowalem aplikacje oraz zrobilem to w drugi bardziej czytelny sposob,
+wyswietlilem rowniez wszytskie pakiety Microsoftu. Przeanalizowalem rowniez komendy do odinstalowania pakietow microsoftu.
+Uruchomilem rowniez wlasne funkcje do uruchomienia notyfikacji.
