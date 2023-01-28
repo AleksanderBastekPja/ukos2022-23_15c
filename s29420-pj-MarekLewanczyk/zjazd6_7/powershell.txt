@@ -1,0 +1,98 @@
+Get-Module -ListAvailable
+- Wyświetliło mi dość długą listę modułów, moge sprawdzić tutaj też m.in. typ, wersje, nazwę.
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+- Wyświetliło mi listę modułów o wersji 2.0.0.0 lub nowszej.
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+- A teraz wyświetliło mi wszystkie polecenia w modułach o wersji 2.0.0.0 lub nowszej.
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+- Podobnie jak poprzednio, tylko teraz przefiltrowało mi polecenia i wyświetliło tylko te z początkiem Get- lub Add-
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+- Tak jak powyżej, tylko tym razem wyświetliło mi to w nowym oknie, które nie jest konsolą.
+
+$nazwaPliku = "mojaNazwaPliku.txt"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+- Coś się zrobiło, tylko nie mogę znaleźć pliku w folderze TEMP. Spróbowałem zmienić lokalizację na pulpit, ale nadal nie pojawia się plik, więc robię coś źle. Już wiem co było moim błędem - nie usunąłem znaku komentarza.
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+- faktycznie nic się nie wypisało
+
+Import-Module BitsTransfer
+Get-Command -Module BitsTransfer
+- wylistowało mi 8 poleceń. 
+
+Start-BitsTransfer -Source http://ipv4.download.thinkbroadband.com/200MB.zip -Destination C:\users\marek\desktop
+- zablokowało mi na chwilę konsolę, ale pobrało mi plik testowy o wielkości 200MB
+
+$job = Start-BitsTransfer -Source http://ipv4.download.thinkbroadband.com/200MB.zip -Destination C:\users\marek\desktop -Asynchronous -DisplayName "Testow 200MB"
+Get-BitsTransfer
+- Plik pobiera się w "tle" nie blokuje mi konsoli, JobState = Transferring. Pod dłuższej chwili dopiero zmienił się na Transferred. 
+
+Complete-BitsTransfer
+- dopiero teraz plik pojawił mi się na pulpicie
+
+Measure-Command {Get-ChildItem -Path C:\Windows}
+-
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 7
+Ticks             : 73598
+TotalDays         : 8,51828703703704E-08
+TotalHours        : 2,04438888888889E-06
+TotalMinutes      : 0,000122663333333333
+TotalSeconds      : 0,0073598
+TotalMilliseconds : 7,3598
+
+Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+- są nawet i 3 aliasy, znane z poprzednich zajęć
+
+ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+-
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          30.10.2022    15:37                PerfLogs
+d-r--          20.01.2023    01:37                Program Files
+d-r--          20.01.2023    02:06                Program Files (x86)
+d----          31.12.2022    12:24                Riot Games
+d-r--          30.10.2022    16:27                Users
+d----          10.01.2023    22:00                Windows
+
+
+& C:\Windows\notepad.exe
+- włączył mi się notatnik
+
+Get-PSDrive
+- wylistowało mi pozycje, których wcześniej nie widziałem, pierwsze literki wskazują z tego co rozumiem na rejestr
+
+cd hklm:\
+- genialne narzędzie, mogę się poruszać po rejestrze jak po zwykłym katalogu
+
+cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+- zmieniłem sobie lokalizację
+
+ls
+- faktycznie jest brzydko, nic z tego nie rozumiem
+
+Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | Format-Table -AutoSize
+
+Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString | Format-Table -AutoSize
+- nie mogę wykonać tego polecenia "Get-ItemProperty: Cannot bind argument to parameter 'Path' because it is null." Kolejnego polecenia nie próbuje, lubię się ze swoimi aplikacjami na domowym "pudle"
+
+Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+- coś się zaczęło ładować i mam, tabelka z (certyfikatami?) Nazwą i dostawcą
+
+Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+- teraz mam tylko kolumne Name i Vendor
+
+Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+- Tak jak w zadaniu, znalazło mi wszystkie pakiety Microsoftu, odinstalować nie mam zamiaru
+
+Używanie powiadomień, bardzo ciekawa opcja. Nie wiedziałem, że można coś takiego wywołać w konsoli. PowerShell naprawdę ma moc :D
