@@ -1,0 +1,50 @@
+Wstęp do PowerShell-a
+Get-Help Get-ExecutionPolicy - okazuje pomoc z dowolnym poleceniem np:
+Get-Help Get-ExecutionPolicy -Examples
+
+Komendy maja stała konwencje Czasownik-Na_Czym_ma_operować
+np.Create-Item
+
+Get-Module -ListAvailable- ukazuje dostepne w danej chwili moduły 
+Gdy chcemy wyszukać dane moduły używamy "Where-Object" lub jego skrótu "?"
+
+Znak "|" uruchamia kolejne polecenie na danych wyjściowych, z popredniego
+polecenia, jeśli podaje się kolekcje/listę/tablicę to elementy po znaku
+"|" są widoczne jako "$_"
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+wylistowało mi moduły tylko z wersja 2.0.0.0 lub wyższą np.
+Manifest   2.0.1.0    Appx                                
+Manifest   3.1.0.0    Microsoft.PowerShell.Utility
+
+Skrót "%" jest od While-Object 
+Jeśli chcemy, aby wyświetlić tylko te które mają w nazwie "Add-" lub "Get-" użyjemy:
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+ | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+Jeśli chcemy pokazać liste w postaci tabelki graficznej używamy "Out-GridView"
+a jek do pliku to "$nazwaPliku = "mojaNazwaPliku.txt""
+można też tylko przetwożyć, bez wipisania "Out-Null"
+
+Ładujemy model BitsTransfer, listujemy za pomocą komendy
+"Get-Command -Module BitsTransfer"
+
+Jeśli chcemy przesyłać plik, aby on nie blokował konsoli używamu komendy
+$job = Start-BitsTransfer -Source 
+http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\
+-Credential $cred -Authentication Negotiate -Asynchronous -DisplayName "Moj Bits Transfer"
+
+Aby zobaczyć jaki jest stan transferu wpiszemy "Get-BitsTransfer"
+Do mierzenia czasu używamy "Measure-Command {Get-ChildItem -Path C:\Windows}"
+Z PS można uruchamiać inne programy użyejemu komendy "call" inaczej "&" np.
+"& C:\Windows\notepad.exe" uruchomi nam się notatnik 
+Komenda Get-PSDrive sprawdza jakie dostępne są dyski w PS
+2.WMI służy do zarzadzania systemem
+
+Dyski w PS 
+Dyski z pojedyńczymi literkami, to normalne dyski w Windows
+Dyski HKML i HKCU to dyski dające dostęp do rejestru
+-Alias- lista zdefiniowanych aliasów 
+-Cert - magazyn certyfikatów TLS/SSL
+-Env - zmienne środowiskowe w bierzącej sesji
+W PS można wywołać notyfikacje np. popup że "Your cat has meowed!"
