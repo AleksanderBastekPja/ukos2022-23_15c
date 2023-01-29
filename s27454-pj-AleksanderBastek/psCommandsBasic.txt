@@ -1,0 +1,51 @@
+Czego sie nauczyłem o PS:
+Synteza:
+Wiem w jaki sposób używać komend zawierających się w modułach Powershell, używania operatorów umożliwiających operacje na strumieniach, wywołyawnanie pętli i definiowanie parametru szukanego. Importu modułu, definiowanie aliasów, wykonywania komend asynchronicznie, wykonywania procesów okienkowych i operacji na rejestrze w PowerShellu. Również dowiedziałem się o istnieniu dysków w systemie.
+
+Ciekawostki:
+Jako osoba głównie używająca linuxa wiem, że istnieją narzędzia, które można używać na systemach unixowych. Oglądałem na kanale uw-team film autorstwa Jakuba Mrugalskiego jednego z redaktorów niebezpiecznika, który skupiał się na narzędzie do białego wywiadu RECON-NG. Struktura jego interfejsu tekstowego była bardzo podobna do Powershella. Istnieje prawdopodobieństwo, że są narzędzia, nawet na linuxie, które korzystają z podobnego interfejsu i fajnie jest znać PowerShella nie tylko, by pracować w środowisku .NET lub na innym produkcie Microsoftu, ale by mieć lotność w posługiwaniu się podobnie zbudowanymi narzędziami. Ogólnie wiedza fajna i przydatna :)
+
+
+Analiza:
+Domyślnie skrypt musi być sygnowany (w ogólnym sensie podlegać autoryzacji przez Microsoft)
+Jako admin możemy wykorzystać polecenie Set-ExecutionPolicy Bypass by to przełączyć
+
+Polecenia mają składnie Czasownik-Byt jaka akcja ma być wykonana na bycie w systemie
+
+Istnieją w systemie moduły, które można załadować
+ich lista widoczna po wywołaniu Get-Module -ListAvailable
+lista-kolekcja kolekcja={byt...}
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+| - pipeline potok używany w kontekście powyższego polecenia do znalezienia bytu o wprowadzonych właściwościach
+? - skrót od Where-Object, potrzebny do zdefiniowania szukanej właściwości w zbiorze bytów w tym kontekście modułów
+$_ - znak zaczynający definicje parametru szukanego
+% - while-object pętla iterująca po atrybutach niższej bytu dziedziczącego niższej klasy
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+import modułów i wykonywanie
+1.
+ipmo [moduł] - import
+2.
+Get-Command -Module [Moduł] - dowiedzmy się co możemy z nim zrobić
+3.
+Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate - Przykład użycia ($cred zmienna z przypisaną wartością danych do autoryzacji)
+
+możliwe asynchroniczne wykonywanie zadania $job="pw polecenie"
+Complete-BitsTransfer -BitsJob $job - zakończ asynchroniczny proces
+
+Get-Alias | ? {$_.Definition -like "Get-ChildItem"} podobnie jak w systemach unixowych (linux,macos etc.) można definować alias
+Measure-Command {Get-ChildItem -Path C:\Windows} - sprawdzenie czasu wykonywania poleceń
+
+wykonywanie procesów & C:\Windows\notepad.exe
+
+istnieje możliwość dostępu z PS do rejestru 
+np. wylistowanie sobie odinstalowanych plików
+/> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+/> ls
+Wchodzimy do folderu rejestru i widzimy jakie są obiekty w nim
+operując na strumieniu można wyświetlić łatwą w interpretacji dla człowieka listę
+
+Wmi służy do zarządzania systemem
+w PS istnieją dyski, które można wylistować
+Get-PSDrive
