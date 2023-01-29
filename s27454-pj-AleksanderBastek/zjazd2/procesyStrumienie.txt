@@ -1,0 +1,212 @@
+Zadania
+0)
+1. Przejdź do swojego katalogu domowego
+
+2. Wydaj komendę: ls -a
+
+3, Zobacz ile plików wypisało.
+
+4. Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+5. Zobacz ile teraz jest wyników. Co się stało?
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+
+6. A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+7. Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+8. A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+Odpowiedzi:
+1-3. wypisało 37 plików
+4-5. Wypisało nazwy plików i katalogów zaczynających się na literę "D".
+6-7. utworzył się plik
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+Plik zawiera nazwy plików i katalogów zaczynających się na literę "D".
+Znak "|" oznacza "pipe", co oznacza, że wyjście z jednego polecenia będzie przekazane do kolejnego polecenia jako jego wejście.
+Znak ">" oznacza "redirect", co oznacza, że wyjście z polecenia będzie zapisane do określonego pliku.
+
+8-9. utworzył się plik
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+Plik zawiera taką samą zawartość jak poprzednia próba, czyli nazwy plików i katalogów zaczynających się na literę "D".
+Program tee służy do przekazywania wyjścia z jednego polecenia do pliku i do terminala. Oznacza to, że wyjście z polecenia zostanie zapisane do pliku i wyświetlone w terminalu.
+
+
+
+1)
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+2. ps
+
+3. ps -a
+
+4. ps x
+
+5. ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+5. Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+6. Nie wiesz? A gdzie może być wyjaśnienie?
+
+B: Jak wykonasz poniższe 2 zadania?
+w 7. Wyświetl wszystkie procesy bash
+
+8. Wyświetl wszystkei procesy należące do użytkownika root
+
+Rozwiąż w podobny sposób zadania 2-8:
+
+2. ps
+Wyświetl procesy
+
+3. ps -a
+wyświetliła się tabela procesów
+
+4. ps x
+Wyświetli wszystkie procesy, nawet te działające w tle
+
+5. ps axu
+Wyświetli wszystkie procesy, włączając w to te działające w tle, wraz z dodatkowymi szczegółami, takimi jak użytkownik, PID, i czas działania procesu.
+
+6. Znak zapytania w kolumnie 2 oznacza, że proces nie ma przypisanego użytkownika.
+
+7. ps -U bash
+Wyświetli wszystkie procesy uruchomione przez użytkownika bash.
+
+8. ps -U root
+Wyświetli wszystkie procesy uruchomione przez użytkownika root.
+
+
+2)
+Zadanie:
+
+1. Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+2. Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+3. Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować. 
+			Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+			Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+4. Zobacz działanie komendy killall bash
+
+5. Zobacz czy kill zadziała dla dowolnego procesu.
+
+
+3)
+1. Uruchom komendę cat be parametrów
+
+2. Wciśnij CTRL+C i zobacz co się stanie
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+3. Zobacz co się stanie:
+
+4. Wydaj komendę cat > wynik3_1.txt
+
+5. Wpisz tekst witaj bez wciskania klawisza Enter
+
+6. Wciśnij CTRL+C
+
+7. Zobacz co się znalazło w pliku wynik3_1.txt
+
+8. Wydaj komendę cat > wynik3_2.txt
+
+9. Wpisz tekst witaj bez wciskania klawisza Enter
+
+10. Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+11. Zobacz co się znalazło w pliku wynik3_2.txt
+
+12. W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+
+czym oba te przykłady się różnią?
+
+DLACZEGO się różnią?
+
+Odpowiedź
+1. Otworzył się strumień
+2. Wróciłem do obsługi mojego użytkownika, strumień się zakończył (w tym przypadku bo zakończył się proces)
+3. Utworzono plik o nazwie wynik3_1.txt
+4. Tekst "witaj" został dodany do pliku
+5. Wróciłem do obsługi mojego użytkownika, strumień się zakończył (w tym przypadku bo zostało wciśnięte CTRL+C)
+6. Utworzono plik o nazwie wynik3_2.txt
+7. Tekst "witaj" został dodany do pliku
+8. Wróciłem do obsługi mojego użytkownika, strumień się zakończył (w tym przypadku bo zostało wciśnięte CTRL+D)
+
+Jak rozumiesz co się stało?
+Użytkownik uruchomił komendę cat bez parametrów, po czym wciśnął CTRL+C lub CTRL+D. W obu przypadkach strumień się zakończył, co spowodowało zapisanie wszystkich danych w pliku, który został utworzony.
+
+Czym oba te przykłady się różnią?
+Oba przykłady różnią się tym, że w pierwszym przypadku strumień został zakończony sygnałem zakończenia (CTRL+C), a w drugim przypadku został zamknięty bez sygnału (CTRL+D).
+
+DLACZEGO się różnią?
+Różnią się one dlatego, że CTRL+C wysyła sygnał zakończenia do procesu otwierającego strumień, podczas gdy CTRL+D zamyka strumień bez wysyłania sygnału.
+
+
+
+4)
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+CTRL+Z służy do wstrzymania bieżącego procesu i przeniesienia go do tła. To znaczy, że program jest w pamięci, ale nie wykonuje żadnych operacji. Jest wstrzymany.
+
+Zobacz co się stanie:
+
+1. Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+
+2. W terminalu w którym sie to uruchomiło wciśnij CTRL+Z
+
+Spróbuj coś wyklikać w gimpie / gedicie
+
+Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+
+Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background). Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek.
+
+Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz:
+
+4. Wpisz komendę: bg
+Wpisałem bg gimp żyje.
+
+5. Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+
+6. Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu. Zobacz co się stanie:
+Proces wrócił
+
+7. Wpisz komendę: fg
+wpsiałem fg 
+
+8. Jak widać proces wrócił i można wcisnąć na przykład CTRL+C aby go zakończyć.
+
+9. W momencie uruchamiania programu, możemy od razu nakazać wykonanie go w tle. Służy do tego znak & umieszczony na końcu instrukcji.
+
+Zobacz:gedit ożył
+INFO: Jeśli jakiegoś programu nie ma to zastąp go innym, który znasz.
+
+10. Wykonaj komendę gimp &
+
+11. Wykonaj komendę gedit &
+
+12. Wykonaj komendę geany &
+terminal jest wolny można go używać
+
+
+15. Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+składnia: fg %(numer jobu)
+Przywróciłem gedit z tła posługując się komendą fg z argumentem o wartości numer jobu
