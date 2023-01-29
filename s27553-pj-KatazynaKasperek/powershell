@@ -1,0 +1,28 @@
+Get-Help Get-ExecutionPolicy -Examples
+Wyswietla liste modlulow, pokazuje np. Wersje, nazwę lub typ
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+Zwraca moduly nowsze niż podana wersja
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+Za pomocą  {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} ukazuja nam sie dodatkowo moduly ktore maja w nazwie add lub get
+Out-GridView
+Za pomocą tego polecenia przedstawiamy wynik w postaci tabelki graficznej
+Aby wypisac wynik do pliku mozemy użyć  Out-File $env:TEMP\$nazwaPliku
+Get-Command -Module BitsTransfer
+Wyświetlamy wszystkie komendy dostępne w tym module (jest ich 8)
+Start-BitsTransfer -Source http://ipv4.download.thinkbroadband.com/200MB.zip -Destination C:\users\marek\desktop
+Pobiera plik
+$job = Start-BitsTransfer -Source http://ipv4.download.thinkbroadband.com/200MB.zip -Destination C:\users\marek\desktop -Asynchronous -DisplayName "Testow 200MB"
+Get-BitsTransfer
+Za pomocą tego polecenia mozna pobrać plik w tle
+Complete-BitsTransfer -BitsJob $job
+Konczymy transfer i plik ukazuje się na pulpicie
+Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+Wyswietla trzy aliasy, bylo o nich na poprzednich zajęciach
+cd hklm:\
+przegladanie rejestru, bardzo ulatwia odnajdywanie sie
+cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+ls
+Niezbyt czytelne rozwiązanie
+
+
+
