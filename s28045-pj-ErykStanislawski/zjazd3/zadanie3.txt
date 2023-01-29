@@ -1,0 +1,7 @@
+Uruchom komendę cat be parametrów
+Wciśnij CTRL+C i zobacz co się stanie
+CTRL C zatrzymuje działanie programu
+
+Wpisując komende cat>wynik3_1.txt po wpisaniu tekstu i naciśnieciu
+CTRL C do pliku nic się nie zapisuje, a używając CTRL D zapisze 
+się wpisany tekst, ponieważ CTRL D kończy strumień wejściowy

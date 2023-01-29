@@ -1,0 +1,6 @@
+Uruchom wybrany przez Ciebie graficzny edytor tekstowy
+-Uruchomiłem gedit, sprawdziłem PID za pomocą komendy ps axu | grep gedit
+Numer programu to 960
+- Komenda kill 960  nie zadziałałam, musiałem użyć komendy kill-9 i numer PID
+- -9 wprowadza SIGKILL, który odrazu kończy proces
+- killall bash zakańcza wszytkie procesy, które mają w sobie podany tekst bash
