@@ -14,22 +14,22 @@ Jak przejść do katalogu ala ale za pomocą:
 
 ścieżki bezwzględnej (absolutnej)
 
-- cd ~/tmp/ukos/ala
+- cd /tmp/ukos/ala
 
 2. Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota.
 Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
 
-- poddrzewo tworzy sie za pomoca komendy mkdir -p jan/kowalski
+- poddrzewo tworzy sie za pomoca komendy mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
 
 3. Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
 
 źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
 
-- mv ../../../kot/ma/ale ~/tmp/ukos/ala/i
+- mv ../../../kot/ma/ale /tmp/ukos/ala/i
 
 źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
 
-- mv ~/tmp/ukos/kot/ma/ale ../../../ala/i
+- mv /tmp/ukos/kot/ma/ale ../../../ala/i
 
 4. Jak zamknąć program, który nie reaguje na ctrl+c ?
 
