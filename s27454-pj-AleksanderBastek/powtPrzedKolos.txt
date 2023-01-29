@@ -1,0 +1,95 @@
+20-11-22
+
+1
+Jest dane takie drzewo katalogów:
+
+.
+
+├── ala
+
+│   ├── i
+
+│   │   └── as
+
+│   └── ma
+
+│       └── kota
+
+└── kot
+
+    └── ma
+
+        └── ale
+
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
+Jak przejść do katalogu ala ale za pomocą:
+
+ścieżki względnej (relatywnej)
+
+ścieżki bezwzględnej (absolutnej)
+
+2. Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
+
+3
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
+źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
+źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
+
+Odpowiedź dla 1-3:
+
+Przechodziłem do katalogów za pomocą używania ścieżek wględnych np. cd ../../ala (z katalogu kot do ala) i z ścieżek bezwzględnych cd /home/PJWSTK/s27454/ala do poleceń rm, mv, cp etc. formy ścieżek względnych i bezwzględnych przedstawione tutaj są aplikowalne.
+
+4. Jak zamknąć program, który nie reaguje na ctrl+c ?
+wysłać poleceniem kill zamiast sygnału domyślnego term, sygnał kill, kill -s SIGKILL <pid>, zamiast domyślnie zamykać go przez term.
+
+5. Jak wypisać wszystkie pliki w bieżącym katalogu, których nazwa zaczyna się od al?
+Tu będzie trochę opisu ode mnie na temat wyrażeń regularnych.
+Materiały:
+http://www.robelle.com/smugbook/regexpr.html
+https://www.regular-expressions.info/
+
+Narzędzia do testowania wyrażeń regularnych w przyzwoity sposób:
+https://regex101.com/
+https://regexr.com/
+
+Odpowiedź:
+ls -p | grep al | grep -v /
+
+6.
+Nadaj uprawnienia do katalogu ala tak aby:
+
+każdy mógł do niego wejść
+
+tylko grupa mogła wyświetlić co w nim jest
+
+właściciel ma pełne prawa
+
+Podpowiedź: powyższe 3 punkty opisu to jedno zadanie. Nie 3 osobne.
+Przygotuj 3 wariacje rozwiązania tego zadania używając różnych notacji: 
+
+oktalnej/ósemkowej/cyfrowej
+
+literowej ze znakiem równości
+
+literowej z plusami i minusami
+
+Wszystkie wersje powinny być zapisane w jednym poleceniu (bez używania && czy | )
+
+Odpowiedź:
+
+chmod 741 ala,
+chmod u+rwx, g+r, o+x, g-wx, o-rw ala
+chmod u=rwx, g=r, o=x ala
+
+
+7. Jak utworzyć plik z listą plików w bieżącym katalogu?
+Odpowiedź:
+ls -la | grep -v 'd[rwx]' > plik.txt
+
+8. Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupełnianie komend?
+tab
+
+9. Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+
+CTRL+D - zakończenie strumienia wejściowego
+CTRL-Z - wstrzymanie procesu
