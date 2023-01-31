@@ -1,0 +1,28 @@
+23.10.2022
+
+Znalezc w swoim katalogu domowym podkatalog public_html (jesli go nie ma, to utworzyc; musi sie on nazywac DOKLADNIE tak jak podano, pisane malymi literami z podkresleniem zamiast spacji pomiedzy slowami). Umiescic w nim plik o nazwie strona.html o nastepujacej zawartosci:
+
+<HTML>
+
+<BODY>
+
+<H1>To jest moja strona domowa</H1>
+
+</BODY>
+
+</HTML>
+
+-Sprawdzic, jakie sa minimalne uprawnienia dostepu, ktore trzeba przydzielic do:
+
+katalogu domowego;
+
+katalogu public_html;
+
+pliku strona.html, aby zawartosc pliku byla widoczna w przegladarce internetowej pod adresem http://szuflandia.pjwstk.edu.pl/~twoj_login/strona.html
+
+Wykokanie:
+
+Umiesclilem plik strona.html w podkatalogu public_html. Minimalne uprawnienia dostepu dla:
+-katalogu domowego to xx1
+-katalogu public_html to xx1   --- dla wszystkich katalogow i pliku minimalne uprawnienia to prawo do wykonania dla others
+-pliku strona.html to xx1 
