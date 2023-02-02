@@ -53,7 +53,7 @@ https://regex101.com/
 https://regexr.com/
 
 Odpowiedź:
-ls -p | grep al | grep -v /
+ls | grep '^ala*'
 
 6.
 Nadaj uprawnienia do katalogu ala tak aby:
