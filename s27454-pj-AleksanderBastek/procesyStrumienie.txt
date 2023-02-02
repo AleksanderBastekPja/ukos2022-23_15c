@@ -61,6 +61,8 @@ A: Zobacz co się stanie jeśli wpiszemy w terminalu:
 INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
 
 5. Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Proces nie ma przypisanego interfejsu terminala.
+
 6. Nie wiesz? A gdzie może być wyjaśnienie?
 
 B: Jak wykonasz poniższe 2 zadania?
@@ -158,9 +160,7 @@ Czym oba te przykłady się różnią?
 Oba przykłady różnią się tym, że w pierwszym przypadku strumień został zakończony sygnałem zakończenia (CTRL+C), a w drugim przypadku został zamknięty bez sygnału (CTRL+D).
 
 DLACZEGO się różnią?
-Różnią się one dlatego, że CTRL+C wysyła sygnał zakończenia do procesu otwierającego strumień, podczas gdy CTRL+D zamyka strumień bez wysyłania sygnału.
-
-
+Ctrl+D wysyła SIGINT (key interrupt) i zatrzymuje proces. Ctrl+D wysyła EOF (end of file) do strumienia strumienia procesu, zakańczając strumień.
 
 4)
 INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
