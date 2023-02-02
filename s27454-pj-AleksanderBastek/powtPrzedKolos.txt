@@ -93,5 +93,5 @@ tab
 
 9. Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
 
-CTRL+D - zakończenie strumienia wejściowego
 CTRL-Z - wstrzymanie procesu
+dodanie & na końcu komedy gedit &
