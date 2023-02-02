@@ -52,7 +52,7 @@ niż pojedynczy operator, który nadpisuje całą zawartość pliku. tail -f poz
 4. Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie strona.html o następującej zawartości:
 
 Odpowiedź:
+Dla katalogu public_html nadałem dla others uprawnienie do wykonania, które dla folderów jest uprawnieniem do wejścia do katalogu. Dla pliku nadałem dla others uprawnienia do odczytu. Dopiero wtedy wyświetlanie strony zadziałało.
 
-Nadałem katalogowi public_html uprawnienia 750, a 644 dla pliku
 strona.html
 
