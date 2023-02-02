@@ -76,9 +76,11 @@ literowej z plusami i minusami
 Wszystkie wersje powinny być zapisane w jednym poleceniu (bez używania && czy | )
 
 Odpowiedź:
+Przy +/- należy wiedzieć jakie są uprawnienia. Jeśli katalog ma 000 to polecenie będzie wyglądać tak
+chmod u+rwx, g+r, o+x ala
 
 chmod 741 ala,
-chmod u+rwx, g+r, o+x, g-wx, o-rw ala
+
 chmod u=rwx, g=r, o=x ala
 
 
